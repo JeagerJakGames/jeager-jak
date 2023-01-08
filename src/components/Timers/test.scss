@@ -1,0 +1,29 @@
+.countDownContainer {
+    // center a div
+    display: flex;
+    padding: 3em;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+.countdown {
+    // center a div
+    align-items: center;
+    justify-content: center;
+    display: block;
+    width: calc(45em);
+}
+
+.NewYearTitle {
+    // center a div
+    align-items: center;
+    font-size: 4em;
+}
+
+.timerNumbers {
+    font-size: 3em;
+}
+
+

@@ -1,0 +1,156 @@
+$animation-timer: 2s;
+
+.loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+
+    //delete when done wiht mock up
+    // background-color: white;
+    // border-radius:10%;
+    // border: 1em solid black;
+    // height: 30em;
+    // width: 30em;
+}
+.loader-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0%;
+    width: 0%;
+    background-color: transparent;
+    animation: infinite $animation-timer linear star-container-rotate;
+}
+
+.star-nova{
+    position: absolute;
+    right: 100px;
+    height: 1em;
+    width: 1em;
+    background-color: black;
+    border-radius: 100%;
+    animation: infinite  $animation-timer linear star-nova;
+}
+.star-nova2{
+    position: absolute;
+    left: 100px;
+    height: 1em;
+    width: 1em;
+    background-color: black;
+    border-radius: 100%;
+    animation: infinite  $animation-timer linear star-nova2;
+}
+.black-hole{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 1em;
+    width: 1em;
+    background-color: black;
+    border-radius: 100%;
+}
+.black-hole-bottom-ring{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3rem;
+    height: .5rem;
+    border-bottom: solid 3px black;
+    border-radius: 100%;
+}
+.black-hole-bottom{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.5rem;
+    height: 2rem;
+    border-bottom: solid 2px black;
+
+    border-radius: 100%;
+}
+.black-hole-top{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.8rem;
+    height: 2.5rem;
+    border-top: solid 2px black;
+    border-radius: 100%;
+}
+
+
+
+
+.star-load {
+    cursor: pointer;
+    width: .5rem;
+    height:.5rem;
+    border-radius: 50%;
+    background-color: #fff;    
+    box-shadow: 
+    0 0 7.5px .5px rgba(0, 4, 255, 0.8) inset,
+    0 0 20px 14px rgb(0, 255, 191, .2),
+    0 0 35px 25px rgb(87, 0, 114),
+    0 0 50px 40px rgb(0, 255, 255, .2);
+}
+    
+
+
+@keyframes star-nova2 {
+    0%{
+        transform: scale(.2);
+        z-index: -1;
+
+    }
+    50%{
+        transform: scale(3);
+        z-index: 1;
+
+    }
+    100%{
+        transform: scale(.2);
+        z-index: -1;
+
+
+    }
+
+}
+@keyframes star-nova {
+
+    0%{
+        transform: scale(3);
+
+    }
+    50%{
+        transform: scale(.2);
+
+    }
+    100%{
+        transform: scale(3);
+    }
+}
+
+    
+@keyframes star-container-rotate {
+    0%{
+        transform: rotate(-90deg);
+    }
+    100%{
+        transform: rotate(280deg);
+    }
+}
+    
+
+
+

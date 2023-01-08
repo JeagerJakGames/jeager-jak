@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  
+    noscript {
+      font-family: 'Arial Black', Gadget, sans-serif;
+      color: white;
+    }
+    noscript div{
+      background-color: black;
+      height: 100vh;
+      width: 100vw;
+    }
+  
+    noscript div div {
+      width: calc(100vw /2);
+      height: calc(100vh /2);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    noscript p {
+      font-size: 1.5rem;
+      text-align: left;
+    }
+
+    noscript p p {
+      font-size: 1rem;
+      text-align: left;
+    }
+  
+    noscript b {
+      color: red;
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <noscript>
+      <div>
+        <div>
+          <p style="text-transform:uppercase; text-decoration: overline;">JavaScript has been detected as <b>IN-ACTIVE</b></p>
+          <br>
+          <p>
+            This website has been developed with React.js.
+            <br> React is a JavaScript library for building user interfaces or UI components.
+            <br> Please enable JavaScript to view this website, as it is a JavaScript website.
+            <br>
+            <br> <p style="text-decoration: underline;">This can be done by going to your browser settings and enabling JavaScript.</p>
+            <br> Thank you
+          </p>
+          <br>
+          <br>
+          <p style="text-decoration: underline;">For more information about React, you may visit: <a href="https://reactjs.org">REACT.ORG</a></p>
+        </div>
+      </div>
+    </noscript>
+  </body>
+</html>

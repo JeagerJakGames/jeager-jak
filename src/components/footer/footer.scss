@@ -1,0 +1,46 @@
+
+@import '../../styles/variables.scss';
+
+footer{
+    position: absolute;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: $primary-color-dark;
+    text-decoration: none;
+    div{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      div{
+        justify-content: center;
+        text-align: left;
+        align-items: center;
+        padding: 15px;
+        ul{
+            li{
+                list-style: none;
+                color: $primary-color-dark;
+                
+                a{
+                    color: $primary-color-dark;
+                    border-radius: .2rem;
+                }
+                :hover{
+                    background-color: $primary-background-color;
+                    color: $primary-color;
+                }
+            }
+        }
+      }
+    }
+  }
+
+  .footer{
+    overflow: hidden;
+  }
+  .z-index--1{
+    z-index: -1;
+  }

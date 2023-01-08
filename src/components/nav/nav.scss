@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap'); //Roboto
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap'); //Chakra Petch
+
+@import "../../styles/variables.scss";
+
+
+.nav {
+    background: $header-background;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 3rem;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    box-shadow: 0 0 10px 0px $primary-color-dark;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+
+
+
+    section {
+        display: flex;
+        justify-content: center;
+
+    }
+}
+.dark-header-ul {
+    display: flex;
+    align-items: center;
+    color: $primary-color-dark;
+    background-color: $primary-background-color-dark;
+
+    li {
+        list-style: none;
+        text-shadow: 0px 0px 10px $primary-color-dark;
+        z-index: 1;
+        margin: 0 10px;
+
+        a {
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+
+            &:hover {
+                border-radius: 2px;
+                box-shadow:
+                    0px 0px 10px 7px $primary-color-dark,
+                    0px 0px 10px 7px $primary-color-dark inset;
+                font-weight: 700;
+                text-shadow: 0px 0px 10px $primary-color-dark;
+                color: $primary-color;
+            }
+        }
+    }
+}
+.light-header-ul {
+    display: flex;
+    align-items: center;
+    color: $primary-color;
+    background-color: $primary-background-color;
+
+    li {
+        list-style: none;
+        text-shadow: 0px 0px 10px $primary-color;
+        z-index: 1;
+        margin: 0 10px;
+
+        a {
+            color:$primary-color;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+
+            &:hover {
+                border-radius: 2px;
+                box-shadow:
+                    0px 0px 10px 7px $primary-color,
+                    0px 0px 10px 7px $primary-color inset;
+                font-weight: 700;
+                text-shadow: 0px 0px 10px $primary-color;
+                color: $primary-color-dark;
+            }
+        }
+    }
+}
+
+.dark-mode-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    margin: 0 1rem;
+}
