@@ -13,7 +13,6 @@ export default function Nav(props: NavProps) {
 
     const isDarkMode = theme != '' ? true : false;
 
-    console.log(isDarkMode);
     return (
         <>
             <header>
@@ -30,8 +29,8 @@ export default function Nav(props: NavProps) {
                         className={isDarkMode ? "dark-header-ul" : "light-header-ul"}
                         >
                             <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/contact'>Contact</Link></li>
-                            <li><Link to='/root'>Root</Link></li>
+                            {/* <li><Link to='/contact'>Contact</Link></li> */}
+                            <li><Link to='/todo'>ToDo</Link></li>
                             <li><Link to='/Timers'>Timers</Link></li>
                         </ul>
                     </section>
