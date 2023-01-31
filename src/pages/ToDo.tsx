@@ -1,26 +1,22 @@
+import React from "react";
 import DDLGrid from "../components/Grid/DDLGrid/DDLGrid";
 
 
-export default async function ToDo() {
+export default function ToDo() {
+    const [data, setData] = React.useState<any>([]);
     const url = "https://jeagerjak.azurewebsites.net/";
     const endPoint = "WeatherForecast";
-    let err = null;
-    await fetch(url + endPoint)
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        const list = data;
-
-        return(
-            <div>
-                <h1>ToDo</h1>
-                <DDLGrid name={"todo-list"} gridObjects={list} />
-            </div>
-        )
-    })
-    .catch((error) => {
-        err = error;
+    React.useEffect(() => {
+        fetch(url + endPoint)
+            .then(response => response.json())
+            .then(data => data ?? setData(data))
+            .catch(error => console.log(error));
     });
-    if(err) return <div>{err}</div>
-    return <h1>incomplete</h1>
+    if(data.length < 1) return(<div>Loading...</div>);
+    return(
+        <div>
+            <h1>ToDo</h1>
+            <DDLGrid name={"todo-list"} gridObjects={data} />
+        </div>
+    )
 }
