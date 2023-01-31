@@ -15,11 +15,12 @@ export default function ToDo() {
             }) 
             .catch(error => console.log(error));
     },[]);
-    if(data.length < 1) return(<div>Loading...</div>);
     if(data.length > 0) return(
         <div>
             <h1>ToDo</h1>
             <DDLGrid name={"todo-list"} gridObjects={data} />
         </div>
-    )
+    );
+    return(<div>Loading...</div>);
+
 }
