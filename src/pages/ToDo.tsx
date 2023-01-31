@@ -9,11 +9,14 @@ export default function ToDo() {
     React.useEffect(() => {
         fetch(url + endPoint)
             .then(response => response.json())
-            .then(data => data ?? setData(data))
+            .then(data => {
+                setData(data);
+                console.log(data);
+            }) 
             .catch(error => console.log(error));
-    });
+    },[]);
     if(data.length < 1) return(<div>Loading...</div>);
-    return(
+    if(data.length > 0) return(
         <div>
             <h1>ToDo</h1>
             <DDLGrid name={"todo-list"} gridObjects={data} />

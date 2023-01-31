@@ -71,7 +71,6 @@ export default function DDLGrid(prop: GridProps) {
     }, [noteId]);
 
     function nextPage() {
-        console.log(searchResults.length)
         if(searchResults.length > 0){
             if (page < pageCount) {
                 setPage(page + 1);
@@ -87,7 +86,6 @@ export default function DDLGrid(prop: GridProps) {
 
     }
     function prevPage() {
-        console.log(searchResults.length)
         if(searchResults.length > 0){
             if (page > 1) {
                 setPage(page - 1);

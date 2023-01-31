@@ -1,5 +1,4 @@
 
-import React from 'react';
 import style from './grid.module.scss';
 interface thProps {
     keys: string[]
