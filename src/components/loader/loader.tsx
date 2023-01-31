@@ -1,7 +1,6 @@
 import './loader.scss';
 
 export default function Loader() {
-    console.log('loader-activated');
     return (
         <>
             <div className="loader">

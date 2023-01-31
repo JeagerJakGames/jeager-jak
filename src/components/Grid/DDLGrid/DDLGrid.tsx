@@ -13,7 +13,7 @@ interface GridProps {
 
 
 export default function DDLGrid(prop: GridProps) {
-    const {name} = prop;
+    const { name } = prop;
     const { theme, toggleTheme } = React.useContext<ThemeContextType>(ThemeContext);
     const keys = Object.keys(prop.gridObjects[0]);
     const [visibleAmount, setVisibleAmount] = React.useState(10);
@@ -23,29 +23,41 @@ export default function DDLGrid(prop: GridProps) {
     const [noteId, setNoteId] = React.useState(0);
     const [notes, setNotes] = React.useState<any[]>([]);
     const [search, setSearch] = React.useState<string>('');
+    const [searchResults, setSearchResults] = React.useState<any[]>([]);
+
+
 
 
     React.useEffect(() => {
+        console.log("useEffect 1");
         if(search !== ''){
             const objs:any[] = prop.gridObjects.filter((obj => {
                 for(let key in obj) {
                     if(obj[key].toString().toLowerCase().includes(search.toLowerCase())) return obj;
                 }
             }));
-            setVisibleObjects(objs.slice(0, visibleAmount));
-            setPageCount(Math.ceil(objs.length / visibleAmount));
+            if(objs.length > 0){
+                console.log(objs);
+                setVisibleObjects(objs.slice(0, visibleAmount));
+                setSearchResults(objs);
+                setPageCount(Math.ceil(objs.length / visibleAmount));
+            }
         }
-        else {
-            setPageCount(Math.ceil(prop.gridObjects.length / visibleAmount));
+        else{
+            setVisibleObjects(prop.gridObjects.slice(0, visibleAmount));
+            setPageCount(Math.ceil(prop.gridObjects.length / visibleAmount)); 
         }
-    }, [visibleAmount, page, visibleObjects, pageCount,search]);
+    }, [search]);
 
     React.useEffect(() => {
-        setPage(1);
-    },[pageCount,visibleAmount]);
-
+        console.log("useEffect 2");
+        if(searchResults.length < 1){
+            setPageCount(Math.ceil(prop.gridObjects.length / visibleAmount)); 
+        }
+    }, [visibleAmount, page, visibleObjects]);
 
     React.useEffect(() => {
+        console.log("useEffect 3");
         console.log(noteId);
         if (noteId > 0) {
             setNotes([
@@ -56,7 +68,46 @@ export default function DDLGrid(prop: GridProps) {
             ]);
         }
         else setNotes([]);
-    }, [noteId])
+    }, [noteId]);
+
+    function nextPage() {
+        console.log(searchResults.length)
+        if(searchResults.length > 0){
+            if (page < pageCount) {
+                setPage(page + 1);
+                setVisibleObjects(searchResults.slice((page) * visibleAmount, (page + 1) * visibleAmount));
+            }
+        }
+        else{
+            if (page < pageCount) {
+                setPage(page + 1);
+                setVisibleObjects(prop.gridObjects.slice((page) * visibleAmount, (page + 1) * visibleAmount));
+            }
+        }
+
+    }
+    function prevPage() {
+        console.log(searchResults.length)
+        if(searchResults.length > 0){
+            if (page > 1) {
+                setPage(page - 1);
+                setVisibleObjects(searchResults.slice((page - 2) * visibleAmount, (page - 1) * visibleAmount));
+            }
+        }
+        else{
+            if (page > 1) {
+                setPage(page - 1);
+                setVisibleObjects(prop.gridObjects.slice((page - 2) * visibleAmount, (page - 1) * visibleAmount));
+            }
+        }
+
+    }
+    function clearSearch() {
+        setSearch('');
+        setSearchResults([]);
+        setPage(1);
+        setPageCount(Math.ceil(prop.gridObjects.length / visibleAmount));
+    }
 
 
 
@@ -81,19 +132,9 @@ export default function DDLGrid(prop: GridProps) {
                         <SearchGrid setSearch={setSearch} />
                     </>
                     <div className={style.alignCenter}>
-                        <button onClick={() => {
-                            if (page > 1) {
-                                setPage(page - 1);
-                                setVisibleObjects(prop.gridObjects.slice((page - 2) * visibleAmount, (page - 1) * visibleAmount));
-                            }
-                        }}>&#x3c;</button>
+                        <button onClick={() => prevPage()}>&#x3c;</button>
                         <p> Viewing Page: {page} of  {pageCount} pages</p>
-                        <button onClick={() => {
-                            if (page < Math.ceil(prop.gridObjects.length / visibleAmount)) {
-                                setPage(page + 1);
-                                setVisibleObjects(prop.gridObjects.slice(page * visibleAmount, (page + 1) * visibleAmount));
-                            }
-                        }}>&#x3e;</button>
+                        <button onClick={() => nextPage()}>&#x3e;</button>
                         <select onChange={(e) => {
                             setVisibleAmount(parseInt(e.target.value));
                             setVisibleObjects(prop.gridObjects.slice(0, parseInt(e.target.value)));
@@ -109,26 +150,19 @@ export default function DDLGrid(prop: GridProps) {
                 {/* The table content */}
                 <table className={`${style.table} ${style["table-light"]}`}>
                     <TH keys={keys} />
-                    {visibleObjects.map((obj) => {
-                        return <TRNotes keys={keys} obj={obj} setNoteId={() => setNoteId} />
-                    })}
+                        {
+                        visibleObjects.map((obj, index) => (
+                            <TR key={index} keys={keys} obj={obj} setNoteId={setNoteId} />
+                        ))
+                    }
+
                 </table>
                 {/* The footer. Also probably needs ot be put in a component */}
                 <div className={`${style.tblfooter} ${style["display-row"]}`}>
                     <div className={style.alignCenter}>
-                        <button onClick={() => {
-                            if (page > 1) {
-                                setPage(page - 1);
-                                setVisibleObjects(prop.gridObjects.slice((page - 2) * visibleAmount, (page - 1) * visibleAmount));
-                            }
-                        }}>&#x3c;</button>
+                        <button onClick={() => prevPage()}>&#x3c;</button>
                         <p> Viewing Page: {page} of  {pageCount} pages</p>
-                        <button onClick={() => {
-                            if (page < Math.ceil(prop.gridObjects.length / visibleAmount)) {
-                                setPage(page + 1);
-                                setVisibleObjects(prop.gridObjects.slice(page * visibleAmount, (page + 1) * visibleAmount));
-                            }
-                        }}>&#x3e;</button>
+                        <button onClick={() => nextPage()}>&#x3e;</button>
                         <select onChange={(e) => {
                             setVisibleAmount(parseInt(e.target.value));
                             setVisibleObjects(prop.gridObjects.slice(0, parseInt(e.target.value)));

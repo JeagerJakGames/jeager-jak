@@ -16,7 +16,7 @@ export default function Home() {
 
     const isDarkMode = theme != '' ? true : false;
 
-    const imgs: string[] = [];//[rimImage,gif];
+    const imgs: string[] = [rimImage,gif];
     document.title = 'Home';
     return (
         <>

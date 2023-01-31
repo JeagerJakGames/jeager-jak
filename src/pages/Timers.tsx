@@ -10,23 +10,23 @@ export default function Timers() {
     document.title = "Timers";
     const [content, setContent] = React.useState(0);
     const page: JSX.Element[] = [
-        <div><NoCounterSelected/></div>,
+        <div><NoCounterSelected /></div>,
         <div><NewYear /><Firework /></div>,
-        <div><ProjectStart/></div>,
+        <div><ProjectStart /></div>,
     ];
     return (
         <>
             <div className={ts.container}>
                 <ul>
-                    <li 
-                    className="btn"
-                    onClick={() => setContent(1)}
+                    <li
+                        className="btn"
+                        onClick={() => setContent(1)}
                     >
-                    New-Year Count Down
+                        New-Year Count Down
                     </li>
                     <li
-                    className="btn"
-                    onClick={() => setContent(2)}
+                        className="btn"
+                        onClick={() => setContent(2)}
                     >
                         Project Start
                     </li>
